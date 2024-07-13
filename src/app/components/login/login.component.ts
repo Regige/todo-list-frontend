@@ -21,41 +21,16 @@ export class LoginComponent {
 
   async login() { // Logik um mit backend zu kommunizieren
 
-    // const myHeaders = new Headers();
-    // myHeaders.append("Content-Type", "application/json");
-
-
-    // const raw = JSON.stringify({
-    //   "username": this.username,
-    //   "password": this.password
-    // });
-
-    // const requestOptions:RequestInit = {
-    //   method: "POST",
-    //   headers: myHeaders,
-    //   body: raw,
-    //   redirect: "follow"
-    // };
-
-    // try {
-    //   let resp = await fetch(environment.baseURL + "/login/", requestOptions);
-    //   let json = await resp.json();
-    //   localStorage.setItem('token', json.token);
-    //   // TODO: Redirect
-    // } catch(e) {
-    //   // Show error message
-    //   console.error(e);
-    // }
-
     try {
-      let resp = await this.as.loginWithUsernameAndPassword(this.username, this.password);
+      let resp: any = await this.as.loginWithUsernameAndPassword(this.username, this.password);
       console.log(resp);
+      localStorage.setItem('token', resp['token']);
       this.router.navigateByUrl('/todos');
     } catch(e) {
       alert('Login fehlgeschlagen');
       console.error(e);
     }
-
   }
+
 
 }

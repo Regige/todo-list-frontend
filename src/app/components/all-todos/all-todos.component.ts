@@ -30,11 +30,6 @@ export class AllTodosComponent {
 
   loadTodos() {
     const url = environment.baseURL + '/todos/';
-    let headers = new HttpHeaders();
-    headers = headers.set('Authorization', 'Token ' + localStorage.getItem('token'));
-
-    return lastValueFrom(this.http.get(url, {
-      headers: headers
-    }));
+    return lastValueFrom(this.http.get(url));
   }
 }
