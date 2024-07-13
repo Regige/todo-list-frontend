@@ -1,1 +1,5 @@
-<p>all-todos works!</p>
+@for (todo of todos; track $index) {
+<input type="checkbox" [checked]="todo.checked" />
+<div>{{ todo.title }}</div>
+
+}
