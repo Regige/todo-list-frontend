@@ -1,3 +1,5 @@
+<h1>{{ error }}</h1>
+
 @for (todo of todos; track $index) {
 <input type="checkbox" [checked]="todo.checked" />
 <div>{{ todo.title }}</div>
