@@ -1,12 +1,26 @@
 <h1>{{ error }}</h1>
 
-@for (todo of todos; track $index) {
-<input type="checkbox" [checked]="todo.checked" />
-<div>{{ todo.title }}</div>
-
-}
-
 <form (ngSubmit)="saveNewTodo()" method="post">
-  <input type="text" name="todoText" [(ngModel)]="todoText" required />
+  <input
+    type="text"
+    name="todoText"
+    [(ngModel)]="todoText"
+    required
+    placeholder="To do"
+  />
   <button>Save</button>
 </form>
+
+<div class="todos-container">
+  @for (todo of todos; track todo.id; let idx = $index) {
+  <div class="todo-container">
+    <input
+      type="checkbox"
+      [checked]="todo.checked"
+      (change)="updateTodo(idx, $event)"
+    />
+    <div>{{ todo.title }}</div>
+    <button (click)="deleteTodo(idx)">X</button>
+  </div>
+  }
+</div>

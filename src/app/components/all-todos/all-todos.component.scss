@@ -1,0 +1,12 @@
+.todos-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+
+    .todo-container {
+        display: flex;
+        align-items: center;
+    }
+
+}
