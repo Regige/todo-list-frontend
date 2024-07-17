@@ -5,3 +5,8 @@
 <div>{{ todo.title }}</div>
 
 }
+
+<form (ngSubmit)="saveNewTodo()" method="post">
+  <input type="text" name="todoText" [(ngModel)]="todoText" required />
+  <button>Save</button>
+</form>
