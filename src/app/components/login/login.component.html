@@ -1,5 +1,10 @@
+<h2>Login</h2>
 <form (ngSubmit)="login()">
   <input type="text" name="username" [(ngModel)]="username" required />
   <input type="password" name="password" [(ngModel)]="password" required />
   <button>Login</button>
 </form>
+
+<div>
+  <span>Not registerd yet? Click <a [routerLink]="['/register']">here</a></span>
+</div>
