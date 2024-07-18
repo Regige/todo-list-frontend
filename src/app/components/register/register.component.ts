@@ -18,17 +18,28 @@ export class RegisterComponent {
   lastName: string = '';
   email: string = '';
   password: string = '';
+  password_2: string = '';
 
   constructor(private router: Router, private http: HttpClient) {}
 
-  register() {
+  async register() {
+    try {
       const url = environment.baseURL + '/register/';
       const body = {
         "username": this.username,
+        "first_name": this.firstName,
+        "last_name": this.lastName,
         "email": this.email,
-        "password": this.password
+        "password": this.password,
+        "password2": this.password_2
       };
-      return lastValueFrom(this.http.post(url, body));
+      let resp = await lastValueFrom(this.http.post(url, body));
+      if(resp) {
+        this.router.navigateByUrl('/login');
+      }
+    } catch(e) {
+      console.error(e);
+    }
   }
 
 }
